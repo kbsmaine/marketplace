@@ -1,24 +1,25 @@
 # MarketSquare
 
-A full-stack Craigslist-style classifieds marketplace engine with:
-- User accounts and JWT auth
-- Listing creation/editing/deletion
+A working Craigslist-style classifieds marketplace engine with a Node.js + Express API and a lightweight vanilla frontend.
+
+## Features
+- User registration and login with JWT auth
+- Listing creation, editing, deletion
 - Image uploads
-- Categories and configurable category seed data
-- Search, filters, and location-based browsing
+- Categories
+- Search and filters
+- Location fields (city/state/ZIP + optional lat/lng)
 - Buyer/seller messaging
 - Favorites
-- Reporting and moderation tools
+- Reporting and moderation
 - Admin dashboard
-- Optional featured listings and Stripe-ready payment stub
+- Featured-listing payment stub
 
 ## Stack
-- Frontend: React + Vite
-- Backend: Node.js + Express
-- Database: SQLite (better-sqlite3)
-- Deployable on VPS/DigitalOcean immediately; adaptable for Vercel frontend + external API host
+- Backend: Node.js + Express + SQLite
+- Frontend: Vanilla HTML/CSS/JS
 
-## Quick start
+## Run locally
 
 ### 1) Backend
 ```bash
@@ -27,45 +28,24 @@ cp .env.example .env
 npm install
 npm run dev
 ```
-Backend runs on `http://localhost:4000`
+API runs at `http://localhost:4000`
 
 ### 2) Frontend
 ```bash
 cd client
-cp .env.example .env
-npm install
 npm run dev
 ```
-Frontend runs on `http://localhost:5173`
+Frontend runs at `http://localhost:5173`
 
 ## Default admin
 - Email: `admin@marketsquare.local`
 - Password: `Admin123!`
 
-Change this immediately after first login.
-
-## Production notes
-- Replace JWT secret in `server/.env`
-- Put uploads on S3/Cloudflare R2 for production
-- Move SQLite to PostgreSQL if you need scale
-- Add email verification, password reset, rate limiting store, and stronger moderation rules before public launch
-
-## Categories
-Edit seeded categories in:
-- `server/src/seed.js`
-
-## Optional payments
-This project includes a featured-listing payment stub. To fully enable payments:
-- add Stripe keys in `server/.env`
-- complete the checkout endpoint in `server/src/routes/payments.js`
-
 ## Deployment
-### VPS / DigitalOcean
-- Run backend with PM2
-- Build frontend with `npm run build`
-- Serve frontend via Nginx or `vite preview`
+- VPS / DigitalOcean: run the backend with PM2, serve the client with Nginx or `serve`
+- Vercel: host the `client` folder as a static site, and host `server` separately on a VPS, Railway, Render, or Fly.io
 
-### Vercel
-- Deploy `client` to Vercel
-- Host `server` separately on a VPS, Render, Railway, or Fly.io
-- Set `VITE_API_URL` to your deployed API URL
+## Notes
+- Uploaded images are stored locally in `server/uploads`
+- The featured-listing payment route is a stub that marks a listing as featured for demo/testing
+- Categories are seeded in `server/src/seed.js`

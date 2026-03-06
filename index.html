@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MarketSquare</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <h1>MarketSquare</h1>
+      <p>Modern private-sale classifieds</p>
+    </div>
+    <div class="top-actions">
+      <button id="show-login">Login</button>
+      <button id="show-register" class="secondary">Register</button>
+      <button id="show-create" class="accent">Post Listing</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <aside class="sidebar card">
+      <h2>Browse</h2>
+      <form id="filters" class="stack">
+        <input type="text" id="q" placeholder="Search listings" />
+        <select id="category"></select>
+        <input type="text" id="city" placeholder="City" />
+        <input type="text" id="state" placeholder="State" />
+        <div class="row">
+          <input type="number" id="minPrice" placeholder="Min" />
+          <input type="number" id="maxPrice" placeholder="Max" />
+        </div>
+        <label><input type="checkbox" id="featuredOnly" /> Featured only</label>
+        <button type="submit">Apply Filters</button>
+      </form>
+
+      <div class="stack mt">
+        <button id="show-favorites" class="secondary">Favorites</button>
+        <button id="show-messages" class="secondary">Messages</button>
+        <button id="show-my-listings" class="secondary">My Listings</button>
+        <button id="show-admin" class="secondary">Admin</button>
+        <button id="logout" class="danger">Logout</button>
+      </div>
+
+      <div class="card muted-box mt">
+        <strong>Quick demo notes</strong>
+        <p>Use the admin login from the README for moderation tools. Featured checkout is a stub that marks listings featured for demo purposes.</p>
+      </div>
+    </aside>
+
+    <section class="content">
+      <div class="grid" id="listings"></div>
+      <div id="details"></div>
+    </section>
+  </main>
+
+  <div class="modal hidden" id="modal">
+    <div class="modal-card card">
+      <button class="close" id="close-modal">×</button>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
